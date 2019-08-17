@@ -32,10 +32,17 @@
    :headers {"Content-Type" "text/html"}
    :body (loading-page)})
 
+(defn echo-handler [_request]
+  {:status 200
+   :headers {"Content-Type" "application/json"}
+   :body (_request :body)})
+
+
 (def app
   (reitit-ring/ring-handler
    (reitit-ring/router
     [["/" {:get {:handler index-handler}}]
+     ["/echo" {:post {:handler echo-handler}}]
      ["/items"
       ["" {:get {:handler index-handler}}]
       ["/:item-id" {:get {:handler index-handler
