@@ -1,0 +1,14 @@
+[Unit]
+Description=event collector
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/java -jar event-collector.jar
+WorkingDirectory=/home/pi/event-collector
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+[Unit]
+Description=serveo tunnel
+After=network.target
+Wants=network.target
+
+[Service]
+ExecStart=/usr/bin/autossh -R xyz.serveo.net:80:localhost:3000 serveo.net
+WorkingDirectory=/home/pi/serveo-tunnel
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+RestartSec=10
+User=pi
+
+[Install]
+WantedBy=multi-user.target
