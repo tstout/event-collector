@@ -32,10 +32,10 @@
    :headers {"Content-Type" "text/html"}
    :body (loading-page)})
 
-(defn echo-handler [_request]
+(defn echo-handler [request]
   {:status 200
    :headers {"Content-Type" "application/json"}
-   :body (_request :body)})
+   :body (request :body)})
 
 
 (def app
