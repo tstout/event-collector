@@ -1,0 +1,16 @@
+[Unit]
+Description=local tunnel
+After=network.target
+Wants=network.target
+
+[Service]
+ExecStart=/usr/local/bin/lt --port 3000 --subdomain xyz
+WorkingDirectory=/home/pi/local-tunnel
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+RestartSec=10
+User=pi
+
+[Install]
+WantedBy=multi-user.target
